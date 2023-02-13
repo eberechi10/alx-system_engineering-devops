@@ -1,2 +1,3 @@
 #!/bin/bash
-fine . -type d ! -path . | wc -1
+find . -type d -not -name '.' | wc -l
+
