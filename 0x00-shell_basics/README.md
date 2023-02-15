@@ -1,16 +1,17 @@
-**Shell, Basics**
+# **Shell, Basics**
+
 Project done during Full Stack Software Engineering studies at ALX. It aims to learn about basics commands, navigation, files and directories in Shell.
 
-**Technologies**
+## **Technologies**
 
-Scripts written in Bash 
-Tested on Ubuntu 20.04 LTS
+* Scripts written in Bash 
+* Tested on Ubuntu 20.04 LTS
 
-**Files**
+## **Files**
 
 All of the following files are scripts, except magic.mgc:
 
-| Filename |  Description |
+| **Filename** |  **Description** |
 | --- | ---|
 | 0-current_working_directory |	Prints the absolute path name of the current working directory |
 | 1-listit | Displays the content list of the current directory |
