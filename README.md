@@ -1,16 +1,17 @@
 
-System engineering & Devops
+# System engineering & Devops
+
 Module of System engineering and Devops, carried out during Full Stack Software Engineering studies at ALX
 
-**Technologies**
+## Technologies
 
-Scripts written in Bash :
+* Scripts written in Bash :
 
-Tested on Ubuntu 20.04 LTS
+* Tested on Ubuntu 20.04 LTS
 
-Puppet: 
+* Puppet: 
 
-**Projects**
+## Projects
 
 All of the following folders are projects done during the studies:
 
