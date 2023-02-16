@@ -26,8 +26,8 @@ All of the following files are scripts:
 10-mirror_permissions	|Sets the mode of the file hello the same as olleh's mode
 11-directories_permissions	|Adds execute permission to all subdirectories of the current directory for the owner, the group of the owner and all the other users
 12-directory_permissions	|Creates a directory called dir_best with permissions 751 in the working directory
-13-change_group	|Changes the group owner to Best for the file hello
-100-change_owner_and_group|	Changes the owner to betty and the group owner to best for all the files and directories in the working directory
+13-change_group	|Changes the group owner to school for the file hello
+100-change_owner_and_group|	Changes the owner to vincent and the group owner to staff for all the files and directories in the working directory
 101-symbolic_link_permissions	|Changes the owner and the group owner of the file _hello to betty and best respectively
 102-if_only	|Changes the owner of the file hello to betty only if it is owned by the user guillaume
 103-Star_Wars	|Plays the Star Wars IV episode in the terminal
