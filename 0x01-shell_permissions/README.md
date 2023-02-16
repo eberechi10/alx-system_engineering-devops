@@ -1,13 +1,14 @@
 # Shell permissions
 
-Project done during Full Stack Software Engineering studies at ALX School. It aims to learn about man pages, permissions (owner, group and other) of files and directories in Shell.
+Project done during Full Stack Software Engineering studies at ALX School. It aims to learn about permissions (owner, group and other) of files and directories in Shell.
 
 ## Technologies
 
 * Scripts written 
-*Tested on Ubuntu 20.04 LTS
 
-* Files
+* Tested on Ubuntu 20.04 LTS
+
+## Files
 
 All of the following files are scripts:
 
