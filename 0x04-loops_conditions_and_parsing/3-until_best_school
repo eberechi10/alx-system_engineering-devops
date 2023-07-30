@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# script to display "Best School" 10 times using until loop
+x=0
+until [ $x == 10 ]
+do
+    echo "Best School"
+    x=$(( x + 1 ))
+done

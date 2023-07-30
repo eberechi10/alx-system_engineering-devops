@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# script to display "Best School" 10 times except 4th and 8th.
+x=0
+while [ $x -lt 10 ]
+do
+    x=$(( x + 1 ))
+
+    if [ $x == 4 ]
+    then
+        echo "bad luck"
+    elif [ $x == 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+done
