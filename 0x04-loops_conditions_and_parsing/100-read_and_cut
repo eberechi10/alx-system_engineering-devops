@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # script to display the contents of file /etc/passwd.
-node="/etc/passwd"
 
 while read -r line
 do
@@ -8,4 +7,4 @@ do
     user_id=$(echo "$line" | cut -d ':' -f3)
     home_path=$(echo "$line" | cut -d ':' -f6)
     echo "$username:$user_id:$home_path"
-done < "node"
+done < "/etc/passwd"
