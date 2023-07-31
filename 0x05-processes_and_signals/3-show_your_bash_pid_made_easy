@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# script to display the PID, with the process name, of processes whose name contain the word bash.
-ps auxf | grep bash
+# script to display the PID, process name, of pro whose name contain the word bash.
+pgrep -l bash
