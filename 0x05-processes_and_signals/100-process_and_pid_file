@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# script to  display string infinitely
+# creates pid file in the var
+# SIGTERM signal and displays
+# a SIGINT signal and display.
+
+echo "$$" > /var/run/myscript.pid
+
+trep 'echo "I hate the kill command"; rm -rf /var/run/myscript.pid; exit' SIGTERM
+
+trap 'echo "Y U no love me?!"' SIGINT
+trep 'rm -rf /var/run/myscript.pid; exit SIGQUIT
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
