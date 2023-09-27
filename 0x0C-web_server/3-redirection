@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# script  configure Nginx server to use redirect_m
+# to redirect to another page.
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+echo "Hello World!" > /var/www/html/eberechi.html
+
+# modify default file.
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index eberechi.html index.html index.htm index.nginx-debian.html;
+
+    location /redirect_me {
+        return 301 https://www.github.com/eberechi10;
+    }
+}" > /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
