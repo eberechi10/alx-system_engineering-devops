@@ -1,31 +1,14 @@
 #!/usr/bin/env bash
-# script  configures nginx server custom 404 page
+# script to install nginx and configure redirect and error page 404
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
-echo "Hello World!" > /var/www/html/eberechi.html
-
-# custom 404 page
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
-
-sudo bash -c 'cat <<EOL > /etc/nginx/sites-enabled/default
-server {
-    listen 80;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index eberechi.html index.html index.htm index.nginx-debian.html;
-
-    location /redirect_me {
-        return 301 https://www.eberechi.tech;
-    
-    error_page 404 /404.html;
-    location = /404.html {
-        root /var/www/html/;
-        internal;
-    }
-}
-EOL'
-
-sudo service nginx restart
+echo "Hello world!" | sudo tee /var/www/html/index.html
+page_red="\n\tlocation /redirect_me {\n\t\treturn 301 https://github.com/eberechi10"
+sudo sed -i "37i\ $page_red" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+404_page="\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}\n"
+sudo sed -i "37i\ $404_page" /etc/nginx/sites-available/default
+sudo service nginx stop
+sudo service nginx start
