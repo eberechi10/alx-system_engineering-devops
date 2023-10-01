@@ -1,10 +1,10 @@
-# Puppet configuration using Nginx.
+#  Puppet script install and configure Nginx.
 
 package { 'nginx':
   ensure => 'installed',
 }
 
-file { '/var/www/html/uche.html':
+file { '/var/www/html/index.html':
   ensure  => 'file',
   content => 'Hello World!\n',
   owner   => 'www-data',
@@ -19,10 +19,10 @@ file { '/etc/nginx/sites-enabled/default':
     listen [::]:80 default_server;
 
     root /var/www/html;
-    index eberechi.html index.html index.htm index.nginx-debian.html;
+    index index.html index.htm index.nginx-debian.html;
 
     location /redirect_me {
-        return 301 https://www.linkedin.com/eberechi;
+        return 301 https://www.github.com/eberechi10;
     }
 
     error_page 404 /404.html;
