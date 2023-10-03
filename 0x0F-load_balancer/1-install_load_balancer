@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Configure HAproxy so that it send traffic to web-01 and web-02
+
+apt-get -y update
+apt-get -y install haproxy
+
+echo "
+frontend eberechi.tech
+        bind 0:80
+        default_backend web_servers
+
+backend web_servers
+        balance roundrobin
+        server 64820-web-01 54.227.129.58:80
+        server 64820-web-02 54.160.124.73:80
+" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
