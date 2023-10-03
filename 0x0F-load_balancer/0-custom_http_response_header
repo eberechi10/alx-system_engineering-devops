@@ -1,25 +1,20 @@
-#  Puppet script install and configure Nginx.
+#!/usr/bin/env bash
+# configures Nginx to use HTTP response custom header
 
-package { 'nginx':
-  ensure => 'installed',
-}
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
-file { '/var/www/html/index.html':
-  ensure  => 'file',
-  content => 'Hello World!\n',
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0644',
-}
+echo "Hello World!" > /var/www/html/index.html
 
-file { '/etc/nginx/sites-enabled/default':
-  ensure  => 'file',
-  content => "server {
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+
+sudo bash -c 'cat <<EOL > /etc/nginx/sites-enabled/default
+server {
     listen 80;
-    listen [::]:80 default_server;
+    listen [::]:80 default_server ipv6only=on;
 
     root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
+    index.html index.htm index.nginx-debian.html;
 
     location /redirect_me {
         return 301 https://www.github.com/eberechi10;
@@ -30,21 +25,11 @@ file { '/etc/nginx/sites-enabled/default':
         root /var/www/html/;
         internal;
     }
-}",
-  require => Package['nginx'],
-  notify  => Service['nginx'],
 }
+EOL'
 
-file { '/var/www/html/404.html':
-  ensure  => 'file',
-  content => "Ceci n'est pas une page\n",
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0644',
-  notify  => Service['nginx'],
-}
+if ! grep -q 'add_header X-Served-By \$hostname;' /etc/nginx/nginx.conf; then
+    sudo sed -i '/^http {/a \\tadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf
+fi
 
-service { 'nginx':
-  ensure => 'running',
-  enable => true,
-}
+sudo service nginx restart
