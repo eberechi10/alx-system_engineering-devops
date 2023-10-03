@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# a script restores default server port to port 80
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
