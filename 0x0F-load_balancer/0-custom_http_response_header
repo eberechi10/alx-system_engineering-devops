@@ -28,8 +28,8 @@ server {
 }
 EOL'
 
-if ! grep -q 'add_header X-Served-By \$hostname;' /etc/nginx/nginx.conf; then
-    sudo sed -i '/^http {/a \\tadd_header X-Served-By $hostname;' /etc/nginx/nginx.conf
+if ! grep -q 'add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default; then
+    sudo sed -i '/^http {/a \\tadd_header X-Served-By $hostname;' /etc/nginx/sites_enabled/default
 fi
 
 sudo service nginx restart
