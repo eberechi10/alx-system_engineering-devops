@@ -1,35 +1,29 @@
 #!/usr/bin/env bash
-# configures Nginx to use HTTP response custom header
+# Configure Nginx to HTTP response custom header on web-01 and web-02
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
+apt-get -y update
+apt-get -y install nginx
+
+HOST_NAME=$(hostname)
+HEADER="\\\n\tadd_header X-Served-By $HOST_NAME;\n"
+FIND=$(grep "X-Server-by" /etc/nginx/sites-available/default)
+if [[ -z $FIND ]]; then
+    sed -i "23i $HEADER" /etc/nginx/sites-available/default
+fi
 
 echo "Hello World!" > /var/www/html/index.html
 
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
-
-sudo bash -c 'cat <<EOL > /etc/nginx/sites-enabled/default
-server {
-    listen 80;
-    listen [::]:80 default_server ipv6only=on;
-
-    root /var/www/html;
-    index.html index.htm index.nginx-debian.html;
-
-    location /redirect_me {
-        return 301 https://www.github.com/eberechi10;
-    }
-
-    error_page 404 /404.html;
-    location = /404.html {
-        root /var/www/html/;
-        internal;
-    }
-}
-EOL'
-
-if ! grep -q 'add_header X-Served-By \$hostname;' /etc/nginx/sites-enabled/default; then
-    sudo sed -i '/^http {/a \\tadd_header X-Served-By $hostname;' /etc/nginx/sites_enabled/default
+FIND=$(grep "redirect_me" /etc/nginx/sites-available/default)
+STRING="\\\n\tlocation /redirect_me {\n\t\t return 301 https://www.github.com/eberechi10"
+if [[ -z $FIND ]]; then
+    sed -i "42i $STRING" /etc/nginx/sites-available/default
 fi
 
-sudo service nginx restart
+FIND=$(grep "error_page 404" /etc/nginx/sites-available/default)
+ERROR="\\\n\terror_page 404 /custom_404.html;\n"
+if [[ -z $FIND ]]; then
+    echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+    sed -i "40i $ERROR" /etc/nginx/sites-available/default
+fi
+
+service nginx restart
