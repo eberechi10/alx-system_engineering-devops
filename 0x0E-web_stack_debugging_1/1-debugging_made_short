@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# using what you did for task #0, make your fix short and sweet.
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# script modify Nginx server to listen port 80 and  kills the nginx process
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
-kill "$(pgrep 'nginx' | head -1)
+kill -9 "$(cat /run/nginx.pid)"
