@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# script retrieve domain and subdomain.
+
+function my_domain {
+	domain_names=("www" "lb-01" "web-01" "web-02")
+
+	for i in "${domain_names[@]}";
+	do
+		dig "${i}"."$1" | grep -A1 'ANSWER SECTION:' | \
+		awk 'FNR == 2 {printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$i"
+	done
+}
+subdomain {
+	dig "${2}"."$1" | grep -A1 'ANSWER SECTION:' | \
+	awk 'FNR == 2 {printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$2"
+}
+if [ $# -lt 1 ]
+then
+	echo "*** get domain name ***"
+elif [ $# -eq 1 ]
+then
+	my_domain "$1";
+else
+	subdomain "$1" "$2";
+fi
