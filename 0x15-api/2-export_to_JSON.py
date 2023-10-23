@@ -9,7 +9,7 @@ import sys
 
 if __name__ == '__main__':
     base_url = "https://jsonplaceholder.typicode.com/users"
-    url = base_rl + "/" + sys.argv[1]
+    url = base_url + "/" + sys.argv[1]
 
     response = requests.get(url)
     username = response.json().get('username')
