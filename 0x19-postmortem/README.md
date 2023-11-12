@@ -6,17 +6,17 @@ On the 23rd of October 2023, Our organization  web server experienced an unexpec
 
 ### Timeline:(all time in GMT + 1)
 
-|-|-|
-14:25: | Monitoring systems detected a sudden increase in server response times.
+|--|--|
+14:25 | Monitoring systems detected a sudden increase in server response times.
   
-14:56: | Incident response team initiated an investigation to identify the root cause.
+14:56 | Incident response team initiated an investigation to identify the root cause.
 
-15:15: | The team observed server errors and initiated a failover to a backup server.
+15:15 | The team observed server errors and initiated a failover to a backup server.
 
-18:30: | Failover proved unsuccessful, and the decision was made to take the affected server offline.
-20:12: | System administrators identified and resolved the root cause.
+18:30 | Failover proved unsuccessful, and the decision was made to take the affected server offline.
+20:12 | System administrators identified and resolved the root cause.
 
-22:35: |The web server was brought back online, and normal operations resumed.
+22:35 |The web server was brought back online, and normal operations resumed.
 
 ### Root Cause:
 The primary cause of the web server downtime was traced to a node.js server, a critical component of the server infrastructure.
