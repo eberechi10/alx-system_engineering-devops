@@ -1,28 +1,29 @@
-Web Server Downtime
+## Web Server Downtime
 
-Issue Summary: 
+### Issue Summary: 
 
 On the 23rd of October 2023, Our organization  web server experienced an unexpected downtime that disrupted service availability for some hours. This ugly incident impacted negtively on the project I was working leading to loss of quality time.
 
-Timeline:(all time in GMT + 1)
+### Timeline:(all time in GMT + 1)
 
-14:25: Monitoring systems detected a sudden increase in server response times.
+14:25 | Monitoring systems detected a sudden increase in server response times.
   
-14:56: Incident response team initiated an investigation to identify the root cause.
+14:56 | Incident response team initiated an investigation to identify the root cause.
 
-15:15: The team observed server errors and initiated a failover to a backup server.
+15:15 | The team observed server errors and initiated a failover to a backup server.
 
-18:30: Failover proved unsuccessful, and the decision was made to take the affected server offline.
-20:12: System administrators identified and resolved the root cause.
+18:30 | Failover proved unsuccessful, and the decision was made to take the affected server offline.
 
-22:35: The web server was brought back online, and normal operations resumed.
+20:12 | System administrators identified and resolved the root cause.
 
-Root Cause:
+22:35 |The web server was brought back online, and normal operations resumed.
+
+### Root Cause:
 The primary cause of the web server downtime was traced to a node.js server, a critical component of the server infrastructure.
 
 During the investigation, it was discovered that the issue caused a cascading effect in server leading to increased server response times and, eventually, service unavailability.
 
-Preventive Measures:
+### Preventive Measures:
 1. Regular System Audits:
    Conduct regular audits of the entire system, including hardware, software, and configurations, to proactively identify and address potential issues before they impact server performance.
 
